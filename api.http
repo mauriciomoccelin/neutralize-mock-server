@@ -1,0 +1,29 @@
+###
+GET http://localhost:3000/v1/get-uses HTTP/1.1
+
+###
+GET http://localhost:3000/v1/get-uses?name=Dolor HTTP/1.1
+
+###
+
+GET http://localhost:3000/v1/get-uses/1 HTTP/1.1
+
+###
+
+POST http://localhost:3000/v1/get-uses HTTP/1.1
+
+{
+    "name": "Lorem Ipsum"
+}
+
+###
+
+PUT http://localhost:3000/v1/get-uses/1 HTTP/1.1
+
+{
+    "name": "Lorem Ipsum"
+}
+
+###
+
+DELETE http://localhost:3000/v1/get-uses/1 HTTP/1.1
