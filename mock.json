@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Get all users",
+    "method": "get",
+    "path": "/v1/get-uses",
+    "pathMatch": "^\/v1\/get-uses$",
+    "matchs": [
+      {
+        "key": "",
+        "value": "",
+        "statusCode": 200,
+        "defaultMatch": true,
+        "response": [
+          {
+            "id": "1",
+            "name": "Lorem Ipsun"
+          },
+          {
+            "id": "1",
+            "name": "Dolor Sit"
+          }
+        ]
+      },
+      {
+        "key": "name",
+        "value": "Dolor",
+        "statusCode": 200,
+        "defaultMatch": false,
+        "response": [
+          {
+            "id": "1",
+            "name": "Dolor Sit"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Get user by id",
+    "method": "get",
+    "path": "/v1/get-uses/:id",
+    "pathMatch": "^\/v1\/get-uses\/\\d$",
+    "matchs": [
+      {
+        "key": "id",
+        "value": "1",
+        "statusCode": 200,
+        "defaultMatch": false,
+        "response": {
+          "id": "1",
+          "name": "Lorem Ipsun"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Create user",
+    "method": "post",
+    "path": "/v1/get-uses",
+    "pathMatch": "^\/v1\/get-uses$",
+    "matchs": [
+      {
+        "key": "id",
+        "value": "1",
+        "statusCode": 201,
+        "defaultMatch": true,
+        "response": null
+      }
+    ]
+  },
+  {
+    "name": "Update user",
+    "method": "put",
+    "path": "/v1/get-uses/:id",
+    "pathMatch": "^\/v1\/get-uses\/\\d$",
+    "matchs": [
+      {
+        "key": "id",
+        "value": "1",
+        "statusCode": 200,
+        "defaultMatch": true,
+        "response": null
+      }
+    ]
+  },
+  {
+    "name": "Delete a user",
+    "method": "delete",
+    "path": "/v1/get-uses/:id",
+    "pathMatch": "^\/v1\/get-uses\/\\d$",
+    "matchs": [
+      {
+        "key": "id",
+        "value": "1",
+        "statusCode": 200,
+        "defaultMatch": true,
+        "response": null
+      }
+    ]
+  }
+]
