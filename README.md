@@ -1,2 +1,2 @@
 # neutralize-mock-server
-Alternative to mock REST API1's using Node JS with Express
+Alternative to mock REST API's using Node JS with Express
