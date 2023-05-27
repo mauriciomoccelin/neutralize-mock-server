@@ -8,4 +8,6 @@ const application = express();
 
 db.forEach((route) => application[route.method](route.path, api.index));
 
-application.listen(port, () => console.log(`Mock API listening on port ${port}`));
+application.listen(port, () =>
+  console.log(`Mock API listening on port ${port}`)
+);
