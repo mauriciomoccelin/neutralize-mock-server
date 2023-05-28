@@ -1,12 +1,13 @@
-const db = require("./mock.json");
 const express = require("express");
 
-const api = require("./controllers/app");
+const Repository = require("./database/app.repository");
+const AppController = require("./controllers/app.controller");
 
 const port = 3000;
 const application = express();
+const repository = new Repository();
 
-db.forEach((route) => application[route.method](route.path, api.index));
+new AppController(application, repository);
 
 application.listen(port, () =>
   console.log(`Mock API listening on port ${port}`)

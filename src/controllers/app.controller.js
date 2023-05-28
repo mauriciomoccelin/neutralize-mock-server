@@ -1,5 +1,3 @@
-const db = require("../mock.json");
-
 const isValueMatch = (patter, value) => {
   const regex = new RegExp(patter);
   return regex.test(value);
@@ -15,7 +13,7 @@ const sortMatchsByNotDefault = (a, b) => {
 };
 
 const getSortedMatchAPI = (req, apis) => {
-  let apiMatch;
+  let apiMatch = { matchs: [] };
 
   for (const api of apis) {
     if (isAPIMatch(req, api)) {
@@ -42,8 +40,8 @@ const buildReponseFromMatch = (res, match) => {
   return res.status(match.statusCode).json(match.response);
 };
 
-const index = (req, res) => {
-  const matchs = getSortedMatchAPI(req, db);
+const index = (apis) => (req, res) => {
+  const matchs = getSortedMatchAPI(req, apis);
 
   for (const match of matchs) {
     if (isMatchFromSource(match, req.params)) {
@@ -66,6 +64,21 @@ const index = (req, res) => {
   return res.status(404).send("Route not maped.");
 };
 
-module.exports = {
-  index,
-};
+class AppController {
+  constructor(express, repository) {
+    this.express = express;
+    this.repository = repository;
+
+    this.routes();
+  }
+
+  routes() {
+    const apis = this.repository.getApis();
+
+    apis.forEach((route) =>
+      this.express[route.method](route.path, index(apis))
+    );
+  }
+}
+
+module.exports = AppController;
