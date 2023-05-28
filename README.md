@@ -1,6 +1,11 @@
 # Neutralize Mock Server
 
-Alternative to mock REST API's using Node JS with Express and static json file. The future versions will release with:
+Alternative to mock REST API's using Node JS with Express and static json file. It's possible using that for:
+
+- Mock for, in development, API to simulate external HTTP call.
+- Mock for API, in test environment, to run integration tests over container or ci pipelines.
+
+The future versions will release with:
 
 - [ ] Different data source to allow the Mock API consume your mock from database or any other data source.
 - [ ] Interface to managing local data and make easy change mock API's.
