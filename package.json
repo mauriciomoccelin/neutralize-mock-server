@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "test": "npx jest",
     "start": "node ./src/server.js"
   },
   "keywords": [
