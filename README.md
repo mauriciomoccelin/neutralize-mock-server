@@ -85,7 +85,7 @@ Connection: close
 ### Build local image
 
 ```bash
-docker build -t neutralize-mode-server:latest .
+docker build -t neutralize-mock-server:latest .
 ```
 
 > To make your own Mock API's replace the mock file `src/mock.json`, inside the container, in the built time.
@@ -95,7 +95,7 @@ docker build -t neutralize-mode-server:latest .
 > Tests
 
 ```bash
-docker run -it neutralize-mode-server:latest npm run test
+docker run -it neutralize-mock-server:latest npm run test
 ```
 
 ```bash
@@ -130,7 +130,7 @@ Ran all test suites.
 > Mock API
 
 ```bash
-docker run -p 3000:3000 -it neutralize-mode-server:latest npm run start
+docker run -p 3000:3000 -it neutralize-mock-server:latest npm run start
 ```
 
 ```bash
@@ -139,3 +139,4 @@ docker run -p 3000:3000 -it neutralize-mode-server:latest npm run start
 
 Mock API listening on port 3000
 ```
+docker run -p 3000:3000 -v mock.json:/src/mock.json -it neutralize-mock-server:latest npm run start
