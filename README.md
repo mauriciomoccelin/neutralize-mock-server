@@ -15,12 +15,6 @@ The future versions will release with:
 
 Steps.
 
-### Clone the repository
-
-```bash
-git clone git@github.com:mauriciomoccelin/neutralize-mock-server.git
-```
-
 ### Create your API
 
 Take a lock on the `src/mock.json` to see how create your own Mock API. The structure is like the:
@@ -61,6 +55,34 @@ Take a lock on the `src/mock.json` to see how create your own Mock API. The stru
   - `defaultMatch`: if any params, (key, value), is match and the default value is true then request is reponse this mock.
   - `response`: is the value to respond when the api is match, if null the request will have no response.
 
+
+### Create a `Dockerfile`
+
+```Dockerfile
+FROM neutralize/mock-server:1.0.2-beta
+COPY mock.json src/mock.json
+ENTRYPOINT npm run start
+```
+
+#### Build the mock API
+
+```shell
+docker build . --file Dockerfile --tag mock:api
+```
+
+#### Run the mock API
+
+```bash
+docker run -p 3000:3000 -it mock:api
+```
+
+```bash
+> neutralize-mock-server@1.0.0 start
+> node ./src/server.js
+
+Mock API listening on port 3000
+```
+
 #### In the example if the you make the request the api will respond that:
 
 ```bash
@@ -82,15 +104,18 @@ Connection: close
 }
 ```
 
-### Build local image
+## To contribute
+
+1. Clone the repo
+2. Make a pull request
+
+#### Run containers
+
+> Build local image
 
 ```bash
-docker build -t neutralize-mock-server:latest .
+docker build . --file Dockerfile --tag neutralize-mock-server:latest
 ```
-
-> To make your own Mock API's replace the mock file `src/mock.json`, inside the container, in the built time.
-
-### Run container
 
 > Tests
 
@@ -126,17 +151,3 @@ Snapshots:   0 total
 Time:        0.341 s
 Ran all test suites.
 ```
-
-> Mock API
-
-```bash
-docker run -p 3000:3000 -it neutralize-mock-server:latest npm run start
-```
-
-```bash
-> neutralize-mock-server@1.0.0 start
-> node ./src/server.js
-
-Mock API listening on port 3000
-```
-docker run -p 3000:3000 -v mock.json:/src/mock.json -it neutralize-mock-server:latest npm run start
