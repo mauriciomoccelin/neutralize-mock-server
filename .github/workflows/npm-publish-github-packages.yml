@@ -12,6 +12,6 @@ jobs:
     - name: Docker login
       run:  echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username neutralize --password-stdin
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag neutralize-mock-server:${{ github.event.release.tag_name }}
+      run: docker build . --file Dockerfile --tag neutralize/mock-server:${{ github.event.release.tag_name }}
     - name: Push the Docker image
-      run: docker push neutralize-mock-server:${{ github.event.release.tag_name }}
+      run: docker push neutralize/mock-server:${{ github.event.release.tag_name }}
