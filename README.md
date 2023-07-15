@@ -59,7 +59,7 @@ Take a lock on the `src/mock.json` to see how create your own Mock API. The stru
 ### Create a `Dockerfile`
 
 ```Dockerfile
-FROM neutralize/mock-server:1.0.2-beta
+FROM neutralize/mock-server
 COPY mock.json src/mock.json
 ENTRYPOINT npm run start
 ```
