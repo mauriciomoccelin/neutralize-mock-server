@@ -29,7 +29,7 @@ const isMatchFromSource = (match, source) => {
   if (!source) return false;
 
   const params = source[match.key];
-  return match.value === params;
+  return isValueMatch(match.value, params);
 };
 
 const buildReponseFromMatch = (res, match) => {
