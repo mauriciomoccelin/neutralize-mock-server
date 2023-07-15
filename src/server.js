@@ -7,6 +7,8 @@ const port = 3000;
 const application = express();
 const repository = new Repository();
 
+application.use(express.json())
+
 new AppController(application, repository);
 
 application.listen(port, () =>
