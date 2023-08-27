@@ -1,0 +1,15 @@
+{
+  "name": "Create user",
+  "method": "post",
+  "path": "/v1/users",
+  "pathMatch": "^\/v1\/users$",
+  "matchs": [
+    {
+      "key": "id",
+      "value": "1",
+      "statusCode": 201,
+      "defaultMatch": true,
+      "response": null
+    }
+  ]
+}

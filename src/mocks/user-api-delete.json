@@ -1,0 +1,15 @@
+{
+  "name": "Delete a user",
+  "method": "delete",
+  "path": "/v1/users/:id",
+  "pathMatch": "^\/v1\/users\/\\d$",
+  "matchs": [
+    {
+      "key": "id",
+      "value": "1",
+      "statusCode": 204,
+      "defaultMatch": true,
+      "response": null
+    }
+  ]
+}
