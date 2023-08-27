@@ -17,29 +17,27 @@ Steps.
 
 ### Create your API
 
-Take a lock on the `src/mock.json` to see how create your own Mock API. The structure is like the:
+Take a lock on the `src/mocks/*.json` to see how create your own Mock API. The structure is like the:
 
 ```json
-[
-  {
-    "name": "Get user by id",
-    "method": "get",
-    "path": "/v1/users/:id",
-    "pathMatch": "^/v1/users/\\d$",
-    "matchs": [
-      {
-        "key": "id",
-        "value": "1",
-        "statusCode": 200,
-        "defaultMatch": false,
-        "response": {
-          "id": "1",
-          "name": "Lorem Ipsun"
-        }
+{
+  "name": "Get user by id",
+  "method": "get",
+  "path": "/v1/users/:id",
+  "pathMatch": "^/v1/users/\\d$",
+  "matchs": [
+    {
+      "key": "id",
+      "value": "1",
+      "statusCode": 200,
+      "defaultMatch": false,
+      "response": {
+        "id": "1",
+        "name": "Lorem Ipsun"
       }
-    ]
-  }
-]
+    }
+  ]
+}
 ```
 
 #### Where
@@ -60,7 +58,7 @@ Take a lock on the `src/mock.json` to see how create your own Mock API. The stru
 
 ```Dockerfile
 FROM neutralize/mock-server
-COPY mock.json src/mock.json
+COPY ./mocks src/mocks
 ENTRYPOINT npm run start
 ```
 

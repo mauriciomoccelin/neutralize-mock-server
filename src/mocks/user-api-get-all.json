@@ -1,0 +1,36 @@
+{
+  "name": "Get all users",
+  "method": "get",
+  "path": "/v1/users",
+  "pathMatch": "^\/v1\/users$",
+  "matchs": [
+    {
+      "key": "",
+      "value": "",
+      "statusCode": 200,
+      "defaultMatch": true,
+      "response": [
+        {
+          "id": "1",
+          "name": "Lorem Ipsun"
+        },
+        {
+          "id": "1",
+          "name": "Dolor Sit"
+        }
+      ]
+    },
+    {
+      "key": "name",
+      "value": "Dolor",
+      "statusCode": 200,
+      "defaultMatch": false,
+      "response": [
+        {
+          "id": "1",
+          "name": "Dolor Sit"
+        }
+      ]
+    }
+  ]
+}
