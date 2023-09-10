@@ -1,15 +1,36 @@
-{
-  "name": "Create user",
-  "method": "post",
-  "path": "/v1/users",
-  "pathMatch": "^\/v1\/users$",
-  "matchs": [
-    {
-      "key": "id",
-      "value": "1",
-      "statusCode": 201,
-      "defaultMatch": true,
-      "response": null
-    }
-  ]
-}
+[
+  {
+    "name": "Create user",
+    "method": "post",
+    "path": "/v1/users",
+    "pathMatch": "^\/v1\/users$",
+    "matchs": [
+      {
+        "key": "name",
+        "value": null,
+        "statusCode": 400,
+        "defaultMatch": false,
+        "response": {
+          "errors": [
+            "Name is required."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Create user",
+    "method": "post",
+    "path": "/v1/users",
+    "pathMatch": "^\/v1\/users$",
+    "matchs": [
+      {
+        "key": null,
+        "value": null,
+        "statusCode": 201,
+        "defaultMatch": true,
+        "response": null
+      }
+    ]
+  }
+]
