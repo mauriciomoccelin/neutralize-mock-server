@@ -1,3 +1,5 @@
+const express = require("express");
+
 const isValueMatch = (patter, value) => {
   const regex = new RegExp(patter);
   return regex.test(value);
@@ -13,15 +15,14 @@ const sortMatchsByNotDefault = (a, b) => {
 };
 
 const getSortedMatchAPI = (req, apis) => {
-  let apiMatch = { matchs: [] };
+  const matchs = [];
 
   for (const api of apis) {
     if (isAPIMatch(req, api)) {
-      apiMatch = api;
+      matchs.push(...api.matchs);
     }
   }
 
-  const matchs = apiMatch.matchs || [];
   return matchs.sort(sortMatchsByNotDefault);
 };
 
@@ -69,7 +70,12 @@ class AppController {
     this.express = express;
     this.repository = repository;
 
+    this.middlewares();
     this.routes();
+  }
+
+  middlewares() {
+    this.express.use(express.json());
   }
 
   routes() {

@@ -18,6 +18,14 @@ POST http://localhost:3000/v1/users HTTP/1.1
     "name": "Lorem Ipsum"
 }
 
+###
+
+POST http://localhost:3000/v1/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": null
+}
 
 ###
 

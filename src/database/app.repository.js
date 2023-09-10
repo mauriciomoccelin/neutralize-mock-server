@@ -10,9 +10,9 @@ class Repository {
     const apis = [];
     jsonsInDir.forEach((file) => {
       const fileData = fs.readFileSync(path.join("src/mocks", file));
-      const json = JSON.parse(fileData.toString());
+      const mock = JSON.parse(fileData.toString());
 
-      apis.push(json);
+      Array.isArray(mock) ? mock.forEach((m) => apis.push(m)) : apis.push(mock);
     });
 
     return apis;
