@@ -90,7 +90,7 @@ describe("app.controller", () => {
     beforeAll(async () => {
       const controller = new AppController(application, repository).express;
       const payload = {
-        name: "Lorem Ipsm",
+        name: "Lorem Ipsum",
       };
 
       response = await request(controller).post("/v1/users").send(payload);
@@ -98,6 +98,25 @@ describe("app.controller", () => {
 
     it("should response status 201", () => {
       expect(response.status).toBe(201);
+    });
+  });
+
+  describe("(POST /v1/users) when create a user, but name is required", () => {
+    let response;
+    beforeAll(async () => {
+      const controller = new AppController(application, repository).express;
+      const payload = {
+        name: null,
+      };
+
+      response = await request(controller)
+        .post("/v1/users")
+        .set("Content-Type", "application/json")
+        .send(payload);
+    });
+
+    it("should response status 400", () => {
+      expect(response.status).toBe(400);
     });
   });
 
